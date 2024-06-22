@@ -163,4 +163,81 @@ vereador_partido_estadual_geom =
   as_tibble() |>
   left_join(estados_geom, by = 'SG_UF') 
 
+# PLOTA NOME RELIGIOSO ESTADUAL ----------------------------------------------------------
+prefeito_religioso_estadual_geom = 
+  dt_candidatos |>
+  dtplyr::lazy_dt() |>
+  mutate(NM_URNA_CANDIDATO = 
+           NM_URNA_CANDIDATO |>
+           stringr::str_extract("^\\w+")) |>
+  filter(NM_URNA_CANDIDATO %in% proxys$nome_religioso) |>
+  filter(DS_CARGO == 'PREFEITO') |>
+  mutate(id_cand = 1,
+         id_eleito = ifelse(CD_SIT_TOT_TURNO == 1|
+                              CD_SIT_TOT_TURNO == 2|
+                              CD_SIT_TOT_TURNO == 3, 1, 0)
+  ) |>
+  group_by(ANO_ELEICAO, SG_UF, NM_URNA_CANDIDATO) |>
+  summarise(qtd_candidatos = sum(id_cand),
+            qtd_eleitos = sum(id_eleito)) |>
+  as_tibble() |>
+  left_join(estados_geom, by = 'SG_UF')
 
+
+vereador_religioso_estadual_geom = 
+  dt_candidatos |>
+  dtplyr::lazy_dt() |>
+  mutate(NM_URNA_CANDIDATO = 
+           NM_URNA_CANDIDATO |>
+           stringr::str_extract("^\\w+")) |>
+  filter(NM_URNA_CANDIDATO %in% proxys$nome_religioso) |>
+  filter(DS_CARGO == 'VEREADOR') |>
+  mutate(id_cand = 1,
+         id_eleito = ifelse(CD_SIT_TOT_TURNO == 1|
+                              CD_SIT_TOT_TURNO == 2|
+                              CD_SIT_TOT_TURNO == 3, 1, 0)
+  ) |>
+  group_by(ANO_ELEICAO, SG_UF, NM_URNA_CANDIDATO) |>
+  summarise(qtd_candidatos = sum(id_cand),
+            qtd_eleitos = sum(id_eleito)) |>
+  as_tibble() |>
+  left_join(estados_geom, by = 'SG_UF') 
+
+
+
+# PLOTA MILITAR ESTADUAL  ----------------------------------------------------------
+
+
+
+prefeito_militar_estadual_geom = 
+  dt_candidatos |>
+  dtplyr::lazy_dt() |>
+  filter(DS_OCUPACAO %in% proxys$nome_militar) |>
+  filter(DS_CARGO == 'PREFEITO') |>
+  mutate(id_cand = 1,
+         id_eleito = ifelse(CD_SIT_TOT_TURNO == 1|
+                              CD_SIT_TOT_TURNO == 2|
+                              CD_SIT_TOT_TURNO == 3, 1, 0)
+  ) |>
+  group_by(ANO_ELEICAO, SG_UF, DS_OCUPACAO) |>
+  summarise(qtd_candidatos = sum(id_cand),
+            qtd_eleitos = sum(id_eleito)) |>
+  as_tibble() |>
+  left_join(estados_geom, by = 'SG_UF') 
+
+
+vereador_militar_estadual_geom = 
+  dt_candidatos |>
+  dtplyr::lazy_dt() |>
+  filter(DS_OCUPACAO %in% proxys$nome_militar) |>
+  filter(DS_CARGO == 'VEREADOR') |>
+  mutate(id_cand = 1,
+         id_eleito = ifelse(CD_SIT_TOT_TURNO == 1|
+                              CD_SIT_TOT_TURNO == 2|
+                              CD_SIT_TOT_TURNO == 3, 1, 0)
+  ) |>
+  group_by(ANO_ELEICAO, SG_UF, DS_OCUPACAO) |>
+  summarise(qtd_candidatos = sum(id_cand),
+            qtd_eleitos = sum(id_eleito)) |>
+  as_tibble() |>
+  left_join(estados_geom, by = 'SG_UF') 

@@ -1,0 +1,195 @@
+---
+title: "Análise Espacial Eleições"
+author: "Marta"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+line-height: 1.5em
+fontsize: 12pt
+header-includes:
+  - \usepackage{fancyhdr}
+  - \usepackage{fontspec}
+  - \setmainfont{Arial}
+  - \usepackage {hyperref}
+---
+
+\addtolength{\footskip}{-0.8cm}
+\pagestyle{fancyplain}
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(dplyr)
+```
+
+# Análise Espacial
+
+O primeiro conjunto de gráficos buscou estudar espacilmente a distribuição dos candidadatos e eleitos a vereadores e prefeitos no nível municipal e estadual
+
+## Análise de Partidos - Nível Municipal
+
+Para análise de partidos, uma proxy representando partidos da extremas direita for criada, onde os partidos **PRB, PSL, REPUBLICANOS, PATRIOTAS**
+
+### Prefeitos
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_partido_cand.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_partido_eleito.png)
+
+### Vereadores
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_partido_cand.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_partido_eleito.png)
+
+
+## Análise de Nomes Religiosos -  Nível Municipal
+
+Para análise de nomes religiosos, uma proxy representando tais nomes foi criada, se baseando no primeiro nome de urna utilizado por cada candidato
+
+Os nomes fixados como nomes religiosos foram: 'Pastor', 'Padre', 'Irmã', 
+      'Irmão', 'missionário', 'missionária', 
+      'bispo', 'apóstolo', 'apóstola', 
+      'Reverendo', 'Reverenda', 'Pai', 
+      'Mãe', 'Frei', 'Ministro'
+
+
+### Prefeitos
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_religioso_cand.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_religioso_eleito.png)
+
+### Vereadores
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_religioso_cand.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_religioso_eleito.png)
+
+
+## Análise de Nomes Militares
+
+### Prefeitos
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_militar_cand.png)
+
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_militar_eleito.png)
+
+### Vereadores
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_militar_cand.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_militar_eleito.png)
+
+
+## Análise de Partidos - Nível Estadual
+
+### Prefeitos
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_partido_cand_estadual.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_partido_eleito_estadual.png)
+
+### Vereadores
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_partido_cand_estadual.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_partido_eleito_estadual.png)
+
+
+## Análise de Nomes Religiosos
+
+
+### Prefeitos
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_religioso_cand_estadual.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_religioso_eleito_estadual.png)
+
+### Vereadores
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_religioso_cand_estadual.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_religioso_eleito_estadual.png)
+
+
+## Análise de Nomes Militares
+
+### Prefeitos
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_militar_cand_estadual.png)
+
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_militar_eleito_estadual.png)
+
+### Vereadores
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_militar_cand_estadual.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_militar_eleito_estadual.png)
+
+
+
+# Cruzamentos
+
+## Partido - Sexo
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_prefeito_partido_sexo.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_prefeito_partido_sexo.png)
+
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_vereador_partido_sexo.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_vereador_partido_sexo.png)
+## Nome de Urna Religioso - Sexo
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_prefeito_religioso_sexo.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_prefeito_religioso_sexo.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_vereador_religioso_sexo.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_vereador_religioso_sexo.png)
+
+## Cargo Militar - Sexo
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_prefeito_militar_sexo.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_prefeito_militar_sexo.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_vereador_militar_sexo.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_vereador_militar_sexo.png)
+
+## Cruzamentos - Considerando Tam. Populacional
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_prefeito_partido_sexo_populacao.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_prefeito_partido_sexo_populacao.png)
+
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_vereador_partido_sexo_populacao.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_vereador_partido_sexo_populacao.png)
+## Nome de Urna Religioso - Sexo
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_prefeito_religioso_sexo_populacao.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_prefeito_religioso_sexo_populacao.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_vereador_religioso_sexo_populacao.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_vereador_religioso_sexo_populacao.png)
+
+## Cargo Militar - Sexo
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_prefeito_militar_sexo_populacao.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_prefeito_militar_sexo_populacao.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_vereador_militar_sexo_populacao.png)
+
+![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_vereador_militar_sexo_populacao.png)
