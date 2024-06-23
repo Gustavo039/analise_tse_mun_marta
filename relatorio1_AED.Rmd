@@ -1,5 +1,5 @@
 ---
-title: "Análise Espacial Eleições"
+title: "Análise das Eleições Municipais de 2016 e 2020"
 author: "Marta"
 output: 
   pdf_document:
@@ -15,7 +15,7 @@ header-includes:
 
 \addtolength{\footskip}{-0.8cm}
 \pagestyle{fancyplain}
-
+\fancyfoot[R]{\includegraphics[height=2.1cm]{C:/consultoria/logo_marca/logo.png}}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -23,13 +23,37 @@ library(ggplot2)
 library(dplyr)
 ```
 
+
+O seguinte relatório teve como objetivo analisar de maneira visual a distribuição dos candidatos e eleitos a vereadores e prefeitos no Brasil durante as eleições municipais de 2016 e 2020.
+
+O trabalho é dividido 2 grandes tópicos: 
+
+* **Análise Espacial**
+  - Nessa etapa mapas foram desenvolvidos para a visualização da distribuição dos candidatos e suas variáveis de interesse estudadas no território brasileiro. 2 subseções foram criadas para melhor organização, uma para análise municipal e outra para análise por agrupamentos estaduais. Nesse tópico foram estudas as variáveis: presença de partidos de extrema direita, presença de nome de urnas religiosos e presença de candidatos com ocupações policiais e militares
+  
+* **Cruzamentos**
+  - Nessa etapa, diversos cruzamentos entre variáveis foram realizados para melhor entender as inter-relações entre essas. Os cruzamentos realizados foram: quantidade de candidatos e eleitos a vereador e a prefeito por sexo entre as variáveis, presença de partidos de extrema direita, presença de nome de urnas religiosos e presença de candidatos com ocupações policiais e militares.
+Os cruzamentos já citados também foram expandidos buscando visualizar a relação com o tamanho municipal
+
+
 # Análise Espacial
 
-O primeiro conjunto de gráficos buscou estudar espacilmente a distribuição dos candidadatos e eleitos a vereadores e prefeitos no nível municipal e estadual
+O primeiro conjunto de gráficos buscou estudar espacilmente a distribuição dos candidatos e eleitos a vereadores e prefeitos no nível municipal e estadual
+
+Para análise de partidos, uma proxy representando partidos da extrema direita foi criada, onde os partidos **PRB, PSL, REPUBLICANOS, PATRIOTAS** foram aqueles fixados para representar tal espectro político
+
+Para análise de nomes religiosos, uma proxy representando tais nomes foi criada, se baseando no primeiro nome de urna utilizado por cada candidato.
+Os nomes fixados como nomes religiosos foram: **Pastor, Padre, Irmã, 
+      Irmão, Missionário, Missionária, 
+      Bispo, Apóstolo, Apóstola, 
+      Reverendo, Reverenda, Pai, 
+      Mãe, Frei, Ministro**
+      
+Para análise de nomes religiosos, uma proxy representando tais nomes foi criada, se baseando na ocupação divulgada por cada candidato.
+As ocupações fixadas como de origem policial/militar foram: **Membro Das Forças Armadas, Bombeiro Militar, Militar Reformado, Policial Civil, Policial Militar**
+      
 
 ## Análise de Partidos - Nível Municipal
-
-Para análise de partidos, uma proxy representando partidos da extremas direita for criada, onde os partidos **PRB, PSL, REPUBLICANOS, PATRIOTAS**
 
 ### Prefeitos
 
@@ -46,15 +70,6 @@ Para análise de partidos, uma proxy representando partidos da extremas direita 
 
 ## Análise de Nomes Religiosos -  Nível Municipal
 
-Para análise de nomes religiosos, uma proxy representando tais nomes foi criada, se baseando no primeiro nome de urna utilizado por cada candidato
-
-Os nomes fixados como nomes religiosos foram: 'Pastor', 'Padre', 'Irmã', 
-      'Irmão', 'missionário', 'missionária', 
-      'bispo', 'apóstolo', 'apóstola', 
-      'Reverendo', 'Reverenda', 'Pai', 
-      'Mãe', 'Frei', 'Ministro'
-
-
 ### Prefeitos
 
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_prefeito_religioso_cand.png)
@@ -68,7 +83,7 @@ Os nomes fixados como nomes religiosos foram: 'Pastor', 'Padre', 'Irmã',
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_religioso_eleito.png)
 
 
-## Análise de Nomes Militares
+## Análise de Nomes Militares -  Nível Municipal
 
 ### Prefeitos
 
@@ -99,7 +114,7 @@ Os nomes fixados como nomes religiosos foram: 'Pastor', 'Padre', 'Irmã',
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_partido_eleito_estadual.png)
 
 
-## Análise de Nomes Religiosos
+## Análise de Nomes Religiosos - Nível Estadual
 
 
 ### Prefeitos
@@ -115,7 +130,7 @@ Os nomes fixados como nomes religiosos foram: 'Pastor', 'Padre', 'Irmã',
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_vereador_religioso_eleito_estadual.png)
 
 
-## Análise de Nomes Militares
+## Análise de Nomes Militares - Nivel Estadual
 
 ### Prefeitos
 
@@ -144,6 +159,7 @@ Os nomes fixados como nomes religiosos foram: 'Pastor', 'Padre', 'Irmã',
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_vereador_partido_sexo.png)
 
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_vereador_partido_sexo.png)
+
 ## Nome de Urna Religioso - Sexo
 
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_prefeito_religioso_sexo.png)
@@ -164,7 +180,23 @@ Os nomes fixados como nomes religiosos foram: 'Pastor', 'Padre', 'Irmã',
 
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_vereador_militar_sexo.png)
 
-## Cruzamentos - Considerando Tam. Populacional
+# Cruzamentos - Considerando Tam. Populacional
+
+Para cruzamentos onde o tamanho populacional do munícipio foi considerado, 5 categorias foram criadas buscando classificar cada tamanho populacional, sendo elas
+
+* **Município Pequeno**
+  - Até 20000 habitantes
+  
+* **Município Médio**
+  - De 20001 a 100000 habitantes  
+
+* **Município Grande**
+  - De 100001 a 500000 habitantes  
+  
+* **Município Gigante**
+  - Mais de 500001 habitantes
+
+## Partido - Sexo
 
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_prefeito_partido_sexo_populacao.png)
 
@@ -174,6 +206,7 @@ Os nomes fixados como nomes religiosos foram: 'Pastor', 'Padre', 'Irmã',
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_vereador_partido_sexo_populacao.png)
 
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_vereador_partido_sexo_populacao.png)
+
 ## Nome de Urna Religioso - Sexo
 
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_prefeito_religioso_sexo_populacao.png)
@@ -193,3 +226,48 @@ Os nomes fixados como nomes religiosos foram: 'Pastor', 'Padre', 'Irmã',
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_cand_vereador_militar_sexo_populacao.png)
 
 ![](C:/consultoria/Marta_sociais/marta_consultoria/plots/fig_eleito_vereador_militar_sexo_populacao.png)
+
+# Informações Adicionais
+
+## Obtenção de Dados
+
+Para a elaboração do trabalho, as seguintes fontes de dados foram utilizadas
+
+* Dados eleitorais
+  - Fonte Primária: TSE em [Dados Abertos TSE](https://dadosabertos.tse.jus.br/)
+  - Fonte Secundária: DivulgaCand(TSE) em [DivulgaCand](https://divulgacandcontas.tse.jus.br/divulga/#/)
+  - Raspador de Dados Utilizado: electionsBR em [electionsBR](https://electionsbr.com/novo/)
+  
+* Dados Populacionais
+  - Fonte Primária: IBGE em [IBGE - População](https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html?=&t=downloads) 
+  - Raspador de Dados Utilizado: Base dos Dados em [Base dos Dados - População Brasileira](https://basedosdados.org/dataset/d30222ad-7a5c-4778-a1ec-f0785371d1ca?table=0c279444-165b-41da-92cd-50fd7e66baa1)
+  
+* Dados Limites Territoriais
+  - Fonte Primária: IPEA em [IPEA - Geo](https://www.ipea.gov.br/ipeageo/)
+  - Raspador de Dados utilizados: geoBR, pacote baseado no sistema SIRGAS2000, em [geoBR](https://ipeagit.github.io/geobr/)
+  
+
+## Software
+
+Softwares e pacotes adicionais utilizados para a elaboração do trabalho
+
+* Software
+  - R (versão 4.4.0), com compilador x86_64-w64-mingw32/x64 (64-bit)
+  
+* Pacotes para limpeza e organização de dados 
+  - dplyr, tidyr, stringr, glue, janitor, tibble
+  
+* Pacote gráfico
+  - ggplot2
+  
+* Pacote para limitações territorias do Brasil (baseado em SIRGAS2000)
+  - geobr
+  
+* Pacotes compilador de documento
+  - knitr, tinytex, xelatex, yaml
+  
+## Disponibilização de Gráficos e Códigos
+
+Os gráficos construidos para esse documento estão disponíveis no Google Drive e podem ser acessados no seguinte link: https://drive.google.com/drive/folders/1-ZiNcufXKfzPoCTLzlZ_Fn4eDBjhmdl1?usp=drive_link
+
+O código elaborado para a construção desse estudo está disponível no versionador de código GitHub e pode ser acessado através do seguinte link: https://github.com/Gustavo039/analise_tse_mun_marta
