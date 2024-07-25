@@ -1,8 +1,17 @@
 ---
-title: "Untitled"
-author: "Marta"
-date: "2024-07-25"
-output: pdf_document
+title: "Estudo da Prevalência de Sofrimento Mental Leve em Trabalhadores da Atenção Primária em Saúde - Análise Exploratória"
+author: "Elizete e Andreia"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+urlcolor: blue
+line-height: 1.5em
+fontsize: 12pt
+header-includes:
+  - \usepackage{fancyhdr}
+  - \usepackage{fontspec}
+  - \setmainfont{Arial}
+  - \usepackage {hyperref}
 ---
 
 ```{r setup, include=FALSE}
@@ -10,62 +19,17 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-uf_codes <- tibble::tibble(
-  SG_UF = 
-    c("AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"),
-  IBGE_UF_CODE = 
-    c(12, 27, 16, 13, 29, 23, 53, 32, 52, 21, 51, 50, 31, 15, 25, 41, 26, 22, 33, 24, 43, 11, 14, 42, 35, 28, 17)
-)
+library(kableExtra)
+kbl_list = readRDS("tabelas_tse.rds")
 ```
 
+# Nome Religioso
+
+## Vereador
 
 ```{r}
-  tbl_religioso = dt_candidatos |>
-  dtplyr::lazy_dt() |>
-  dplyr::mutate(
-    NM_URNA_CANDIDATO = 
-      NM_URNA_CANDIDATO |>
-      stringr::str_extract("^\\w+")
-    ) |>
-  dplyr::mutate(
-    religioso = ifelse(NM_URNA_CANDIDATO %in% proxys$nome_religioso, 1, 0)
-  ) |>
-  dplyr::mutate(
-    id_cand = 1,
-    id_eleito = 
-      ifelse(
-             CD_SIT_TOT_TURNO == 1|
-             CD_SIT_TOT_TURNO == 2|
-             CD_SIT_TOT_TURNO == 3,
-             1, 0
-             )
-         ) |>
-  dplyr::select(
-    ANO_ELEICAO, 
-    SG_UF,
-    DS_CARGO, 
-    NM_URNA_CANDIDATO, 
-    religioso,
-    id_cand, 
-    id_eleito
-    ) |>
-  dplyr::inner_join(uf_codes, by = 'SG_UF') |>
-  dplyr::mutate(
-    IBGE_REG_CODE = 
-      IBGE_UF_CODE |> 
-      as.character() |>
-      stringr::str_sub(1,1))
-```
-
-
-```{r}
-tbl_vereador_religioso = tbl_religioso |>
-  dplyr::filter(DS_CARGO == 'VEREADOR') |>
-  dplyr::group_by(ANO_ELEICAO, religioso, IBGE_REG_CODE) |>
-  dplyr::summarise(eleitos = sum(id_eleito),
-                   candidatos = sum(id_cand)) |>
-  tibble::as_tibble()
-
-
+kbl_list$kbl_vereador_religioso_2016 |>  
+  kable("latex", booktabs = TRUE, escape = FALSE) |>
+  kable_styling(latex_options = c("striped", "hold_position"))
 ```
 
