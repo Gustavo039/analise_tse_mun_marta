@@ -1,0 +1,183 @@
+---
+title: "Análise das Eleições Municipais de 2016 e 2020 - Tabelas"
+author: "Marta"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+line-height: 1.5em
+fontsize: 12pt
+header-includes:
+  - \usepackage{fancyhdr}
+  - \usepackage{fontspec}
+  - \setmainfont{Arial}
+  - \usepackage {hyperref}
+---
+
+\addtolength{\footskip}{-0.8cm}
+\pagestyle{fancyplain}
+\fancyfoot[R]{\includegraphics[height=2.1cm]{D:/Consultoria/logo_marca/logo_GA_edited.png}}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+```
+
+```{r}
+library(kableExtra)
+kbl_list = readRDS("tabelas_tse.rds")
+```
+
+# Nome Religioso - Por Região
+
+## Vereador
+
+```{r}
+kbl_list$kbl_vereador_religioso_2016 |>  
+  kbl(caption = "Verador Religioso - 2016", booktabs = T, ) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+
+```{r}
+kbl_list$kbl_vereador_religioso_2020 |>  
+  kbl(caption = "Verador Religioso - 2020", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+\newpage
+
+
+## Prefeito
+
+```{r}
+kbl_list$kbl_prefeito_religioso_2016|>  
+  kbl(caption = "Prefeito Religioso - 2016", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+
+
+
+```{r}
+kbl_list$kbl_prefeito_religioso_2020 |>  
+  kbl(caption = "Prefeito Religioso - 2020", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+\newpage
+
+# Forças Repressivas - Por Região
+
+## Vereador
+
+```{r}
+kbl_list$kbl_vereador_militar_2016 |>  
+  kbl(caption = "Vereador Forças Repressivas - 2016", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+
+
+
+```{r}
+kbl_list$kbl_vereador_militar_2020 |>  
+  kbl(caption = "Vereador Forças Repressivas - 2020", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+
+\newpage
+
+## Prefeito
+
+```{r}
+kbl_list$kbl_prefeito_militar_2016 |>  
+  kbl(caption = "Prefeito Forças Repressivas - 2016", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+
+
+
+```{r}
+kbl_list$kbl_prefeito_militar_2020 |>  
+  kbl(caption = "Prefeito Forças Repressivas - 2020", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+
+# Nome Religioso - Por Estado
+
+## Vereador
+
+```{r}
+kbl_list$kbl_vereador_religioso_2016_estado |>  
+  kbl(caption = "Verador Religioso - 2016", booktabs = T, ) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+\newpage
+
+```{r}
+kbl_list$kbl_vereador_religioso_2020_estado |>  
+  kbl(caption = "Verador Religioso - 2020", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+\newpage
+
+## Prefeito
+
+```{r}
+kbl_list$kbl_prefeito_religioso_2016_estado|>  
+  kbl(caption = "Prefeito Religioso - 2016", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+
+\newpage
+
+```{r}
+kbl_list$kbl_prefeito_religioso_2020_estado |>  
+  kbl(caption = "Prefeito Religioso - 2020", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+\newpage
+
+# Forças Repressivas - Por Estado
+
+## Vereador
+
+```{r}
+kbl_list$kbl_vereador_militar_2016_estado |>  
+  kbl(caption = "Vereador Forças Repressivas - 2016", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+\newpage
+
+
+```{r}
+kbl_list$kbl_vereador_militar_2020_estado |>  
+  kbl(caption = "Vereador Forças Repressivas - 2020", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+
+\newpage
+
+## Prefeito
+
+```{r}
+kbl_list$kbl_prefeito_militar_2016_estado |>  
+  kbl(caption = "Prefeito Forças Repressivas - 2016", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
+
+\newpage
+
+```{r}
+kbl_list$kbl_prefeito_militar_2020_estado |>  
+  kbl(caption = "Prefeito Forças Repressivas - 2016", booktabs = T) |>
+  kable_styling(latex_options = c("striped", "hold_position"),full_width = T)
+```
